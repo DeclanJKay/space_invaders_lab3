@@ -15,7 +15,10 @@ add_subdirectory("lib/SFML")
 set(SFML_INCS "lib/SFML/include")
 
 #### Space Invaders Lab 3 Project ####
-add_executable(space_invaders_lab3 main.cpp)
+add_executable(space_invaders_lab3 
+main.cpp 
+Ship.cpp 
+game_systems.cpp)
 
 target_include_directories(space_invaders_lab3 PRIVATE ${SFML_INCS})
 

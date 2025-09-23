@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <filesystem>  // At the top of your file
-
+#include <filesystem>  
 
 // Global variables
 sf::RenderWindow window;       // The game window
