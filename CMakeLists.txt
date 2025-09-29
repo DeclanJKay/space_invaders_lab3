@@ -18,7 +18,8 @@ set(SFML_INCS "lib/SFML/include")
 add_executable(space_invaders_lab3 
 main.cpp 
 Ship.cpp 
-game_systems.cpp)
+game_systems.cpp 
+Bullet.cpp)
 
 target_include_directories(space_invaders_lab3 PRIVATE ${SFML_INCS})
 
