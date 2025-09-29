@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+﻿#include <SFML/Graphics.hpp>
 #include "game_systems.hpp"
 #include "game_parameters.hpp"
 
@@ -10,10 +10,18 @@ int main() {
     sf::Clock clock;
 
     while (window.isOpen()) {
-        sf::Event e;
-        while (window.pollEvent(e)) {
-            if (e.type == sf::Event::Closed)
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
                 window.close();
+            }
+
+            // Restart on R key press if game over
+            if (GameSystem::gameOver && event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R) {
+                GameSystem::clean();   // clear ships & bullets
+                GameSystem::init();    // re-create player and invaders
+                GameSystem::gameOver = false; // reset flag
+            }
         }
 
         float dt = clock.restart().asSeconds();
@@ -26,4 +34,10 @@ int main() {
 
     GameSystem::clean();
     return 0;
+
+    if (GameSystem::gameOver && sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
+        GameSystem::clean();
+        GameSystem::init();
+    }
+
 }

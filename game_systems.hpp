@@ -4,12 +4,20 @@
 #include <memory>
 #include "Ship.hpp"
 
+// --------------------------------------------------
+// GameSystem: central manager for game state
+// --------------------------------------------------
 struct GameSystem {
-    static sf::Texture spriteSheet;
-    static std::vector<std::shared_ptr<Ship>> ships;
+    // Shared resources
+    static sf::Texture spriteSheet;                       // Main sprite sheet
+    static std::vector<std::shared_ptr<Ship>> ships;      // All ships (player + invaders)
 
-    static void init();
-    static void clean();
-    static void update(const float& dt);
-    static void render(sf::RenderWindow& window);
+    // Game state
+    static bool gameOver;                                 // Tracks if game has ended
+
+    // Functions
+    static void init();                                   // Setup ships/resources
+    static void clean();                                  // Free/reset memory
+    static void update(const float& dt);                  // Update all objects
+    static void render(sf::RenderWindow& window);         // Draw everything
 };
